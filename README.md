@@ -20,6 +20,15 @@ to the more secure
 $ curl some-package.verified | verify | sh
 ~~~
 
+Additionally, if you don't have the public key that signed a
+package, and want to trust a package _just this one time_,
+there's a script that can execute verified packages without
+checking to see if they are trusted first.
+
+~~~.sh
+$ curl some-package.verified | trust | sh
+~~~
+
 ## Running the Example
 
 Make sure that OpenBSD's `signify` is somewhere in your `$PATH`.
