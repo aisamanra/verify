@@ -54,3 +54,19 @@ If you can read this, then it has been verified.
 
 If you delete that trusted key, then running the same command
 will result in an error.
+
+## Building your Own Packages
+
+Assuming you have a signify public/private keypair already:
+run the script `sign.sh` with your private key, the name of the
+executable file you want to sign, and the location where
+you want the output to be.
+
+~~~.sh
+$ >my-script.sh <<EOF
+#!/bin/sh
+
+echo Hello, world!
+EOF
+$ sign my-private-key ./my-script ./my-package.verified
+~~~
