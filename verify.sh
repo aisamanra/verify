@@ -31,7 +31,7 @@ elif [ ! -e ./dat ]; then
 	exit 111
 else
 	for pub in $TRUSTDIR/*; do
-		if signify -Vq -p $pub -m ./dat -x ./sig; then
+		if signify -Vq -p $pub -m ./dat -x ./sig 2>/dev/null; then
 			cat ./dat
 			cd / && rm -rf $TGT
 			exit 0
