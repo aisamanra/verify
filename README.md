@@ -6,7 +6,9 @@ use this yet!**
 The `verify` script is a small script that intends to make the
 unfortunately common pattern of installing software using
 `curl | sh` more secure. The `verify` script is a very small
-interface on top of OpenBSD's [signify] tool for code-signing
+interface on top of OpenBSD's
+[signify](http://www.tedunangst.com/flak/post/signify)
+code-signing tool
 that fits in the middle of pipelines, letting you transform
 the insecure pipeline
 
@@ -19,6 +21,14 @@ to the more secure
 ~~~.sh
 $ curl some-package.verified | verify | sh
 ~~~
+
+which will not execute the downloaded program if the package
+has not been signed by a trusted key. The keys used by
+[signify](http://www.tedunangst.com/flak/post/signify)
+are
+[Ed25519](http://ed25519.cr.yp.to/index.html) keys, and
+therefore are very small and can be easily stored and
+distributed in numerous ways.
 
 Additionally, if you don't have the public key that signed a
 package, and want to trust a package _just this one time_,
