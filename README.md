@@ -1,10 +1,10 @@
-# Verify
+# Verify — Lightweight, General-Purpose Code Signing
 
 **WARNING**: `verify` is still in the experimental phase. **Do not
 use this yet!**
 
 The `verify` script is a small script that intends to make the
-common and commonly-derided pattern of installing software with
+unfortunately common pattern of installing software using
 `curl | sh` more secure. The `verify` script is a very small
 interface on top of OpenBSD's [signify] tool for code-signing
 that fits in the middle of pipelines, letting you transform
