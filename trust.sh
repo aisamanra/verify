@@ -2,11 +2,12 @@
 
 TGT=`mktemp -d`
 cd $TGT
-if [ ! tar -xf - ]; then
+tar -xf - || (
 	echo "Malformed data: not a tar archive" >&2
 	cd .. && rm -rf $TGT
 	exit 111
-elif [ ! -e ./sig ]; then
+)
+if [ ! -e ./sig ]; then
 	echo "Malformed data: missing signature" >&2
 	cd .. && rm -rf $TGT
 	exit 111
@@ -16,6 +17,8 @@ elif [ ! -e ./dat ]; then
 	exit 111
 else
 	echo "WARNING: trusting package implicitly" >&2
+	echo "In general, this is a BAD IDEA" >&2
+	echo "" >&2
 	cat ./dat
 	cd / && rm -rf $TGT
 	exit 0

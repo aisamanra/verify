@@ -16,11 +16,12 @@ fi
 
 TGT=`mktemp -d`
 cd $TGT
-if [ ! tar -xf - ]; then
+tar -xf - || (
 	echo "Malformed data: not a tar archive" >&2
 	cd .. && rm -rf $TGT
 	exit 111
-elif [ ! -e ./sig ]; then
+)
+if [ ! -e ./sig ]; then
 	echo "Malformed data: missing signature" >&2
 	cd .. && rm -rf $TGT
 	exit 111
